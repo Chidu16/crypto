@@ -1,6 +1,11 @@
 <h1> Values of CryptoCurrencies </h1>
 
+<% if params[:id] %>
 
+<h3> Current price of "#{params[:id]}"</h3>
+<% else %>
+<h3> Choose a currency please: </h3>
+<% end %>
 
 <a class="btn btn-primary" href=<%= currency_path('Bitcoin') %> role="button">Bitcoin</a>
 <a class="btn btn-primary" href=<%=currency_path('Etherum') %> role="button">Etherum</a>
