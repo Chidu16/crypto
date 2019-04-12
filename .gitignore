@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/config/initializers/api_config.rb
+/config/api_config.yml
