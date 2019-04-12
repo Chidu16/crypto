@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
-  root "crypto#show", id: "bitcoin"
+  root "cryptos#show", id: "bitcoin"
+  
+  resources :cryptos, only: :show
   
 end
