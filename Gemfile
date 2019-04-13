@@ -31,7 +31,8 @@ gem 'rest-client'
 gem 'highcharts-rails'
 gem 'chartkick'
 gem 'groupdate'
-
+gem 'omniauth-twitter'
+gem 'bootstrap-sass'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
