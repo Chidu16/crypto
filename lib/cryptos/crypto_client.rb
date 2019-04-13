@@ -1,14 +1,14 @@
 module CryptoClient
   def self.get_bitcoins
-    get_cryptos(APP_CONFIG.fetch('bitcoin_api_url'))
+    get_currencies('https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=60&aggregate=1&e=CCCAGG')
   end
 
   def self.get_ethereums
-    get_currencies(APP_CONFIG.fetch('ethereum_api_url'))
+    get_currencies('https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=60&aggregate=1&e=CCCAGG')
   end
   
-  def self.get_ripple
-    get_currencies(APP_CONFIG.fetch('ripple_api_url'))
+  def self.get_ripples
+    get_currencies('https://min-api.cryptocompare.com/data/histoday?fsym=XRP&tsym=USD&limit=60&aggregate=1&e=CCCAGG')
   end
 
 #   def self.get_nasdaqs
@@ -20,15 +20,15 @@ module CryptoClient
 #       new_element[key] = value
 #       new_element
 #     end
-#  end
+#   end
 
 private
 
-  def self.get_cryptos(api_url)
+  def self.get_currencies(api_url)
     json_response = get_json_response(api_url)
     json_response['Data'].inject({}) do |new_element, current_element|
-      key = DateTime.strptime(current_element['time'].to_s, '%s')
-      value = current_element['close']
+      key = DateTime.strptime(current_element['updated'].to_s, '%s')
+      value = current_element['rate']
       new_element[key] = value
       new_element
     end

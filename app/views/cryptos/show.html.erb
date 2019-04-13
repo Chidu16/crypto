@@ -2,11 +2,10 @@
 
 <% if params[:id] %>
 
-<h3> Current price of "#{params[:id]}"</h3>
+<h3> Price  of </h3>
 <% else %>
 <h3> Choose a currency please: </h3>
 <% end %>
 
-<a class="btn btn-primary" href=<%= currency_path('Bitcoin') %> role="button">Bitcoin</a>
-<a class="btn btn-primary" href=<%=currency_path('Etherum') %> role="button">Etherum</a>
-<a class="btn btn-primary" href=<%=currency_path('Ripple') %> role="button">Ripple</a>
+<%=Crypto.last.curr_typ %> : <%=Crypto.last.val %> 
+
