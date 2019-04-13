@@ -28,7 +28,7 @@ private
     json_response = get_json_response(api_url)
     json_response['Data'].inject({}) do |new_element, current_element|
       key = DateTime.strptime(current_element['time'].to_s, '%s')
-      value = current_element['rate']
+      value = current_element['close']
       new_element[key] = value
       new_element
     end
