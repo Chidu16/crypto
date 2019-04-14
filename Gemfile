@@ -35,6 +35,7 @@ gem 'omniauth-twitter'
 gem 'bootstrap-sass'
 gem 'dotenv-rails'
 gem 'twitter'
+gem 'news-api'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

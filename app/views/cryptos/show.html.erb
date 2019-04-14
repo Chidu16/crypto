@@ -24,8 +24,13 @@
 <% end %>
 
 
-
-
 <a href="https://twitter.com/intent/tweet?button_hashtag=cryptocurrencies&ref_src=twsrc%5Etfw" 
     class="twitter-hashtag-button" data-show-count="false">Tweet #cryptocurrencies</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+
+</br>
+<h1>News</h1>
+<% @top_headlines.each do |head| %>
+   Headlines: "<%= head.title %>" by: @<%= head.author %> on <%= head.publishedAt %>
+  <br>
+<% end %>
