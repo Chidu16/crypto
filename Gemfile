@@ -33,6 +33,8 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'omniauth-twitter'
 gem 'bootstrap-sass'
+gem 'dotenv-rails'
+gem 'twitter'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

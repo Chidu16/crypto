@@ -1,13 +1,25 @@
-<h1> Values of CryptoCurrencies </h1>
+<% require "cryptos/crypto_client" %>
+<h1> Values of CryptoCurrencies in USD </h1>
 
-<% if params[:id] %>
+<h5>Bitcoin</h5>:<%= CryptoClient.get_bitcoins %>
 
-<h3> Price  of </h3>
-<% else %>
-<h3> Choose a currency please: </h3>
+
+<h5>Ethereums</h5>:<%= CryptoClient.get_ethereums %>
+
+
+<h5>Ripple</h5>:<%= CryptoClient.get_ripples %>
+
+
+</br>
+<h1>Trending</h1>
+<% @tweets.each do |tweet| %>
+  User @<%= tweet.user.screen_name %> said: "<%= tweet.text %>" on <%= tweet.created_at.strftime('%-m/%d/%Y') %>
+  <br>
 <% end %>
 
-<%=Crypto.last.curr_typ %> : <%=Crypto.last.val %> 
-</br>
-<a href="https://twitter.com/intent/tweet?button_hashtag=cryptocurrencies&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #cryptocurrencies</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<a href="https://twitter.com/intent/tweet?button_hashtag=cryptocurrencies&ref_src=twsrc%5Etfw" 
+    class="twitter-hashtag-button" data-show-count="false">Tweet #cryptocurrencies</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

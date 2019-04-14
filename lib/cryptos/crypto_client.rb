@@ -1,14 +1,22 @@
 module CryptoClient
+  
   def self.get_bitcoins
-    get_currencies('https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=60&aggregate=1&e=CCCAGG')
+    
+    json_response = get_json_response('https://api.coindesk.com/v1/bpi/currentprice.json')
+     value = json_response['bpi']['USD']['rate']
+     value
   end
 
   def self.get_ethereums
-    get_currencies('https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=60&aggregate=1&e=CCCAGG')
+    json_response = get_json_response('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,JPY,EUR')
+    value = json_response['USD']
+     value
   end
   
   def self.get_ripples
-    get_currencies('https://min-api.cryptocompare.com/data/histoday?fsym=XRP&tsym=USD&limit=60&aggregate=1&e=CCCAGG')
+    json_response = get_json_response('https://min-api.cryptocompare.com/data/price?fsym=XRP&tsyms=USD,JPY,EUR')
+    value = json_response['USD']
+     value
   end
 
 #   def self.get_nasdaqs
@@ -22,17 +30,13 @@ module CryptoClient
 #     end
 #   end
 
-private
+ private
 
-  def self.get_currencies(api_url)
-    json_response = get_json_response(api_url)
-    json_response['Data'].inject({}) do |new_element, current_element|
-      key = DateTime.strptime(current_element['time'].to_s, '%s')
-      value = current_element['close']
-      new_element[key] = value
-      new_element
-    end
-  end
+#   def self.get_currencies(api_url)
+#     json_response = get_json_response(api_url)
+#     value = json_response['bpi']['USD']['rate']
+#     value
+#   end
 
   def self.get_json_response(api_url)
     response = RestClient.get(api_url)
