@@ -1,4 +1,10 @@
 <% require "cryptos/crypto_client" %>
+
+<% if current_user %>
+  Signed in as <%= current_user.name %>!
+  <%= link_to "Sign out", signout_path %>
+<%end%>
+
 <h1> Values of CryptoCurrencies in USD </h1>
 
 <h5>Bitcoin</h5><%= CryptoClient.get_bitcoins %>
