@@ -1,31 +1,55 @@
 <% require "cryptos/crypto_client" %>
 
-<nav class="navbar navbar-default">
+<nav class="navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <% if current_user %>
-        Signed in as <%= current_user.name %>!
-        <%= link_to "Sign out", signout_path %>
-        <%end%>
-      </a>
+          <ul class="nav-left"><h3>Crypto Compare</h3></ul>
+          <ul class="nav-right"><% if current_user %>
+              Signed in as <%= current_user.name %>!
+              <%= link_to "Sign out", signout_path %>
+              <%end%>
+        </ul>
     </div>
   </div>
 </nav>
 
-
+<div class="intro">
+<br>
+<br>
 
 <h1> Values of CryptoCurrencies in USD </h1>
+<table>  
+<tr>  
+    <th>Crypto Currency</th>
+    <th>Current Rate</th>
+</tr>  
+<tr>  
+    <td><a href ="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a></td>
+    <td><%= CryptoClient.get_bitcoins %></td>
+</tr>  
+<tr>  
+    <td><a href ="https://en.wikipedia.org/wiki/Ethereum">Ethereum</a></td>
+    <td><%= CryptoClient.get_ethereums %></td>
+</tr>  
+<tr>  
+    <td> <a href ="https://en.wikipedia.org/wiki/Ripple_(payment_protocol)">Ripple</a></td>
+    <td><%= CryptoClient.get_ripples %></td>
+</tr>  
+</table>  
 
-<h5>Bitcoin</h5><%= CryptoClient.get_bitcoins %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
 
 
-<h5>Ethereums</h5><%= CryptoClient.get_ethereums %>
+<br>
 
 
-<h5>Ripple</h5><%= CryptoClient.get_ripples %>
-
-<button class="accordion">Trending</button>
+<button class="accordion"><h5><b>Trending</b></h5></button>
 <div class="panel">
   <p><% @tweets.each do |tweet| %>
  <div class="tweet"><%= tweet.text %>"  <%= tweet.created_at.strftime('%-m/%d/%Y') %></div> -<i>@<%= tweet.user.screen_name %> </i>
@@ -37,7 +61,7 @@
 
 </div>
 
-<button class="accordion">News</button>
+<button class="accordion"><h5><b>News</b></h5></button>
 <div class="panel">
   <p><h1>News</h1>
 <% @top_headlines.each do |head| %>
@@ -46,7 +70,7 @@
 <% end %></p>
 </div>
 
-<button class="accordion">Quotes on Crypto Currencies</button>
+<button class="accordion"><h5><b>Quotes on Crypto Currencies</b></h5></button>
 <div class="panel">
   <p><%CryptoClient.get_quotes.each do |quote| %>
  <div class="quote"><%= quote['comment'] %>"</div> --<%=quote['name'] %>
