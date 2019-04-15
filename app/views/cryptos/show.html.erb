@@ -1,27 +1,15 @@
 <% require "cryptos/crypto_client" %>
 
-<nav class="navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-          <ul class="nav-left"><h3>Crypto Compare</h3></ul>
-          <ul class="nav-right"><% if current_user %>
-              Signed in as <%= current_user.name %>!
-              <%= link_to "Sign out", signout_path %>
-              <%end%>
-        </ul>
-    </div>
-  </div>
-</nav>
+
 
 <div class="intro">
 <br>
 <br>
 
-<h1> Values of CryptoCurrencies in USD </h1>
 <table>  
 <tr>  
-    <th>Crypto Currency</th>
-    <th>Current Rate</th>
+    <th><center>Crypto Currency</center></th>
+    <th><center>Current Rate(USD)</center></th>
 </tr>  
 <tr>  
     <td><a href ="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a></td>

@@ -49,6 +49,8 @@ strong {
 
 #login {
 	margin: 50px auto;
+	top: 50px;
+	left: 50px;
 	width: 300px;
 }
 
@@ -159,4 +161,24 @@ form fieldset a:hover { text-decoration: underline; }
 	height: 50px;
 	text-transform: uppercase;
 	width: 250px;
+}
+
+.cent{
+	
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+html{ 
+  background: url(https://stmed.net/sites/default/files/blue-wallpapers-25170-8449488.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
 }
