@@ -1,9 +1,19 @@
 <% require "cryptos/crypto_client" %>
 
-<% if current_user %>
-  Signed in as <%= current_user.name %>!
-  <%= link_to "Sign out", signout_path %>
-<%end%>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <% if current_user %>
+        Signed in as <%= current_user.name %>!
+        <%= link_to "Sign out", signout_path %>
+        <%end%>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
 
 <h1> Values of CryptoCurrencies in USD </h1>
 
@@ -15,22 +25,71 @@
 
 <h5>Ripple</h5><%= CryptoClient.get_ripples %>
 
-
-</br>
-<h1>Trending</h1>
-<% @tweets.each do |tweet| %>
-  User @<%= tweet.user.screen_name %> said: "<%= tweet.text %>" on <%= tweet.created_at.strftime('%-m/%d/%Y') %>
+<button class="accordion">Trending</button>
+<div class="panel">
+  <p><% @tweets.each do |tweet| %>
+ <div class="tweet"><%= tweet.text %>"  <%= tweet.created_at.strftime('%-m/%d/%Y') %></div> -<i>@<%= tweet.user.screen_name %> </i>
   <br>
-<% end %>
-
+<% end %></p>
 
 <a href="https://twitter.com/intent/tweet?button_hashtag=cryptocurrencies&ref_src=twsrc%5Etfw" 
     class="twitter-hashtag-button" data-show-count="false">Tweet #cryptocurrencies</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+</div>
 
-</br>
-<h1>News</h1>
+<button class="accordion">News</button>
+<div class="panel">
+  <p><h1>News</h1>
 <% @top_headlines.each do |head| %>
-   Headlines: "<%= head.title %>" by: @<%= head.author %> on <%= head.publishedAt %>
+   <div class="news"> "<%= head.title %>"</div>  <b><%= head.author %></b> on <%= head.publishedAt %>
   <br>
-<% end %>
+<% end %></p>
+</div>
+
+<button class="accordion">Quotes on Crypto Currencies</button>
+<div class="panel">
+  <p><%CryptoClient.get_quotes.each do |quote| %>
+ <div class="quote"><%= quote['comment'] %>"</div> --<%=quote['name'] %>
+  <br>
+<% end %></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>

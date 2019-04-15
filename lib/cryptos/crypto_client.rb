@@ -18,6 +18,12 @@ module CryptoClient
     value = json_response['USD']
      value
   end
+  
+  def self.get_quotes
+      json_response = get_json_response('https://review-cas-api.herokuapp.com/reviews')
+      quotes = json_response
+      quotes
+  end
 
 #   def self.get_nasdaqs
 #     json = get_json_response(APP_CONFIG.fetch('nasdaq_api_url'))
